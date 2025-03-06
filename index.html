@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maquillaje</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio">Val-makeup</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <header id="inicio" class="text-center p-5 bg-light mt-5">
+        <div id="carouselInicio" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselInicio" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#carouselInicio" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#carouselInicio" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="images/promo.png" class="d-block w-100" alt="Slide 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/promo2.png" class="d-block w-100" alt="Slide 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/promo3.png" class="d-block w-100" alt="Slide 3">
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section id="productos" class="container py-5">
+        <h2 class="text-center">Nuestros Productos</h2>
+        <div id="carouselProductos" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-4"><img src="images/skincare.webp" class="d-block w-100" alt="Producto 1"></div>
+                        <div class="col-md-4"><img src="images/skincare.webp" class="d-block w-100" alt="Producto 2"></div>
+                        <div class="col-md-4"><img src="images/skincare.webp" class="d-block w-100" alt="Producto 3"></div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-4"><img src="images/skincare.webp" class="d-block w-100" alt="Producto 4"></div>
+                        <div class="col-md-4"><img src="images/skincare.webp" class="d-block w-100" alt="Producto 5"></div>
+                        <div class="col-md-4"><img src="images/skincare.webp" class="d-block w-100" alt="Producto 6"></div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductos" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselProductos" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+    </section>
+    
+    <section id="nosotros" class="bg-light p-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="images/sobre.png" class="img-fluid" alt="Sobre Nosotros">
+                </div>
+                <div class="col-md-6 text-center">
+                    <h2>Sobre Nosotros</h2>
+                    <p>Val-Makeup es más que una tienda de cosmética; 
+                        es un universo de expresión personal donde cada 
+                        pincelada cuenta una historia y cada tono realza 
+                        tu verdadera esencia. Fundada por Valentina Cruz, 
+                        una apasionada del maquillaje con más de 10 años de 
+                        experiencia en la industria de la belleza, nuestra 
+                        marca nace del deseo de empoderar a cada persona 
+                        para que descubra y celebre su belleza única.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contacto" class="container py-5">
+        <h2 class="text-center">Contáctanos</h2>
+        <form>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </section>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
