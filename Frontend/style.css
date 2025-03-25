@@ -1,0 +1,152 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+.navbar {
+    background-color: #ffa2c9 !important; 
+}
+nav {
+    height: 50px; /* Ajusta la altura del nav */
+    padding: 5px 20px; /* Reduce el padding para hacerlo más compacto */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 200px; /* Ajusta según necesites */
+    height: 27px; /* Controla la altura */
+    background: white;
+}
+
+.search-container input {
+    border: none;
+    padding: 4px 6px; /* Reduce el padding para hacerla más delgada */
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+    background: white;
+    height: 70%; /* Asegura que llene el contenedor */
+}
+
+.search-container button {
+    border: none;
+    padding: 4px 6px; /* Reduce el tamaño del botón */
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: white !important; 
+}
+
+.navbar-nav .nav-link:hover {
+    color: #000000 !important; 
+}
+
+.card {
+    margin: 15px 0;
+}
+form {
+    max-width: 500px;
+    margin: auto;
+}
+.carousel {
+    height: 500px;
+    object-fit: cover; 
+}
+/* Estilos para el comparador de imágenes */
+.comparador-container {
+    position: relative;
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    margin: auto;
+}
+
+.before-after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.before {
+    background: url('images/despues.webp') no-repeat center/cover;
+}
+
+.after {
+    background: url('images/antes.webp') no-repeat center/cover;
+    width: 50%;
+    overflow: hidden;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: #000;
+    cursor: ew-resize;
+    transform: translateX(-50%);
+}
+/*Formulario*/
+.form-container {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+}
+
+.form-label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    transition: 0.3s;
+    color: #555;
+}
+
+.form-control:focus + .form-label,
+.form-control:valid + .form-label {
+    top: 5px;
+    left: 15px;
+    font-size: 12px;
+    color: #f05cd0;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #ff5a79, #ff6898);
+}
+.user-icon {
+    width: 30px;  /* Tamaño del ícono */
+    height: 30px;
+    border-radius: 50%; /* Para que sea circular */
+    object-fit: cover;  /* Para que la imagen se vea bien dentro del círculo */
+    border: 2px solid white; /* Borde para que destaque */
+    transition: transform 0.3s ease-in-out; /* Efecto al pasar el cursor */
+}
+
+.user-icon:hover {
+    transform: scale(1.1); /* Hace que crezca un poco al pasar el mouse */
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(40%) sepia(80%) saturate(200%) hue-rotate(290deg);
+}

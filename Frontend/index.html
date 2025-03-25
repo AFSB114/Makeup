@@ -3,29 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maquillaje</title>
+    <title>Makeup</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#inicio">Val-makeup</a>
+            <a class="navbar-brand" href="index.html">Val-makeup</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="search-container">
+                <input type="text" placeholder="Buscar">
+                <button><i class="fa fa-search"></i></button>
+            </div>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#nosotros">Sobre Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="productos.html">Cuidado piel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="maquillaje.html">Maquillaje</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="form.html">
+                            <img src="images/user.png" alt="Perfil" class="user-icon">
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     
-    <header id="inicio" class="text-center p-5 bg-light mt-5">
+    
+    <header id="inicio" class="text-center p-5 bg-red mt-5">
         <div id="carouselInicio" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselInicio" data-bs-slide-to="0" class="active"></button>
@@ -47,7 +57,7 @@
     </header>
     
     <section id="productos" class="container py-5">
-        <h2 class="text-center">Nuestros Productos</h2>
+        <h2 class="text-center">Nuevos Productos</h2>
         <div id="carouselProductos" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -95,22 +105,8 @@
         </div>
     </section>
     
-    <section id="contacto" class="container py-5">
-        <h2 class="text-center">Contáctanos</h2>
-        <form>
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="email">
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
-    </section>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="/Frontend/script.js"></script>
 </body>
 </html>
