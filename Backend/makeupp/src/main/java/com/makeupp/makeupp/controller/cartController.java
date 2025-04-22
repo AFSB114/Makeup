@@ -16,10 +16,16 @@ public class cartController {
 
     @PostMapping("/")
     public ResponseEntity<Object> addToCart(@RequestBody cartDTO cartDTO) {
+        System.out.println("📦 cartDTO recibido:");
+        System.out.println("userId: " + cartDTO.getUserId());
+        System.out.println("productId: " + cartDTO.getProductId());
+        System.out.println("stock: " + cartDTO.getStock());
+
         try {
             cartService.save(cartDTO);
             return new ResponseEntity<>("Producto agregado al carrito", HttpStatus.CREATED);
         } catch (RuntimeException e) {
+            e.printStackTrace(); 
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
@@ -33,15 +39,20 @@ public class cartController {
     public ResponseEntity<Object> getCartById(@PathVariable int id) {
         var cart = cartService.findById(id);
         return cart.isPresent()
-            ? new ResponseEntity<>(cart, HttpStatus.OK)
-            : new ResponseEntity<>("Carrito no encontrado", HttpStatus.NOT_FOUND);
+                ? new ResponseEntity<>(cart, HttpStatus.OK)
+                : new ResponseEntity<>("Carrito no encontrado", HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteCart(@PathVariable int id) {
         boolean deleted = cartService.deleteCart(id);
         return deleted
-            ? new ResponseEntity<>("Carrito eliminado", HttpStatus.OK)
-            : new ResponseEntity<>("Carrito no encontrado", HttpStatus.NOT_FOUND);
+                ? new ResponseEntity<>("Carrito eliminado", HttpStatus.OK)
+                : new ResponseEntity<>("Carrito no encontrado", HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<Object> getCartByUser(@PathVariable int userId) {
+        return new ResponseEntity<>(cartService.getCartByUserId(userId), HttpStatus.OK);
     }
 }

@@ -8,18 +8,19 @@ public class userDTO {
     private String phone;
     private String role;
     private String password;
+    private boolean status;
     
     public userDTO() {
     }
 
-    public userDTO(int id, String name, String email, String address, String phone, String role, String password) {
-        this.id = id;
+    public userDTO(String name, String email, String address, String phone, String role, String password, boolean status) {
         this.name = name;
         this.email = email;
         this.address = address;
         this.phone = phone;
         this.role = role;
         this.password = password;
+        this.status = status;
     }
 
     public int getId() {
@@ -76,5 +77,13 @@ public class userDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

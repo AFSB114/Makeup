@@ -3,39 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makeup</title>
+    <title>Skinnn</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Val-makeup</a>
+            <a class="navbar-brand" href="index.html">Skinnn</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="search-container">
-                <input type="text" placeholder="Buscar">
-                <button><i class="fa fa-search"></i></button>
-            </div>
-            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="productos.html">Cuidado piel</a></li>
-                    <li class="nav-item"><a class="nav-link" href="maquillaje.html">Maquillaje</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="maquillaje.html">Categorias</a></li>
+
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="form.html">
+                        <button class="nav-link btn btn-link p-0" data-bs-toggle="offcanvas" data-bs-target="#carritoOffcanvas">
+                          <img src="images/carrito.png" alt="Carrito" class="cart-icon">
+                        </button>
+                    </li>
+                
+                    <li class="nav-item dropdown">
+                        <a class="nav-item" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
                             <img src="images/user.png" alt="Perfil" class="user-icon">
                         </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="no-login"><a class="dropdown-item" href="form.html">Registrarse</a></li>
+                            <li class="no-login"><a class="dropdown-item" href="login.html">Iniciar Sesión</a></li>
+                            <li class="yes-login d-none"><a class="dropdown-item" href="usuarios.html">Ver Usuarios</a></li>
+                            <li class="yes-login d-none">
+                                <a class="dropdown-item text-danger" href="#" onclick="logout()">Cerrar Sesión</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    
-    
-    <header id="inicio" class="text-center p-5 bg-red mt-5">
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="carritoOffcanvas" style="width: 400px;">
+    <div class="offcanvas-header">
+      <h5 class="titulo-carrito">Carrito</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <h6 class="text-secondary">DE COMPRAS</h6>
+      <p class="text-muted">Productos agregados</p>
+      
+      <div class="producto-item d-flex align-items-center gap-3 mb-4">
+        <img src="images/skincare2.webp" alt="Producto" class="producto-img" style="width: 60px;">
+        <div class="flex-grow-1">
+          <p class="mb-1">Tratamiento Capilar Repolarizador Kaba 230 ML</p>
+          <select class="form-select form-select-sm w-50">
+            <option selected>1</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+        <div class="text-end">
+          <strong>$ 39.999,00</strong><br />
+          <button class="btn btn-sm btn-outline-danger ms-2">&#128465;</button>
+        </div>
+      </div>
+
+      <div class="mt-4 text-end">
+        <p>Subtotal: $ 39.999,00</p>
+        <p>Entrega: <span class="text-muted">Por calcular</span></p>
+        <h5 class="text-danger">TOTAL: $ 39.999,00</h5>
+      </div>
+
+      <button class="btn btn-carrito w-100 mt-3">VER CARRITO</button>
+      <a href="#" class="d-block text-center mt-2 text-decoration-underline">Continuar comprando</a>
+    </div>
+  </div>
+    <header id="inicio" class="text-center p-0 m-0">
         <div id="carouselInicio" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselInicio" data-bs-slide-to="0" class="active"></button>
@@ -63,15 +106,15 @@
                 <div class="carousel-item active">
                     <div class="row">
                         <div class="col-md-4"><img src="images/skincare.webp" class="d-block w-100" alt="Producto 1"></div>
-                        <div class="col-md-4"><img src="images/skincare.webp" class="d-block w-100" alt="Producto 2"></div>
-                        <div class="col-md-4"><img src="images/skincare.webp" class="d-block w-100" alt="Producto 3"></div>
+                        <div class="col-md-4"><img src="images/skincare2.webp" class="d-block w-100" alt="Producto 2"></div>
+                        <div class="col-md-4"><img src="images/skincare3.webp" class="d-block w-100" alt="Producto 3"></div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="row">
-                        <div class="col-md-4"><img src="images/skincare.webp" class="d-block w-100" alt="Producto 4"></div>
-                        <div class="col-md-4"><img src="images/skincare.webp" class="d-block w-100" alt="Producto 5"></div>
-                        <div class="col-md-4"><img src="images/skincare.webp" class="d-block w-100" alt="Producto 6"></div>
+                        <div class="col-md-4"><img src="images/skincare4.webp" class="d-block w-100" alt="Producto 4"></div>
+                        <div class="col-md-4"><img src="images/skincare5.webp" class="d-block w-100" alt="Producto 5"></div>
+                        <div class="col-md-4"><img src="images/skincare6.webp" class="d-block w-100" alt="Producto 6"></div>
                     </div>
                 </div>
             </div>
@@ -83,30 +126,171 @@
             </button>
         </div>
     </section>
-    
-    <section id="nosotros" class="bg-light p-5">
+
+    <section id="oferta-especial">
+        <div class="oferta-container">
+            <div class="oferta-texto">
+                <h2>-10% CON EL CÓDIGO DRSK23</h2>
+                <p>Skincare</p>
+                <button class="btn-oferta">Comprar ahora</button>
+            </div>
+            <div class="oferta-imagen">
+                <img src="images/pr.png" alt="Oferta especial">
+            </div>
+        </div>
+    </section>
+    <br>
+    <section class="py-5 text-center">
+        <h2 class="fw-bold" style="color: #87005B;">Conoce</h2>
+        <h3 class="mb-5 fw-semibold text-secondary">Nuestras Categorías</h3>
+        
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <img src="images/sobre.png" class="img-fluid" alt="Sobre Nosotros">
+          <div class="row justify-content-center gy-4">
+            
+            <div class="col-6 col-md-2 text-center">
+              <img src="images/cat.jpg" class="rounded-circle img-fluid shadow" style="width: 130px; height: 130px; object-fit: cover;" alt="Nuevo">
+              <p class="mt-2 fw-medium">Limpieza</p>
+            </div>
+
+            <div class="col-6 col-md-2 text-center">
+              <img src="images/cat3.jpg" class="rounded-circle img-fluid shadow" style="width: 130px; height: 130px; object-fit: cover;" alt="Capilar">
+              <p class="mt-2 fw-medium">Exfoliacion</p>
+            </div>
+
+            <div class="col-6 col-md-2 text-center">
+              <img src="images/cat4.jpg" class="rounded-circle img-fluid shadow" style="width: 130px; height: 130px; object-fit: cover;" alt="Facial">
+              <p class="mt-2 fw-medium">Tonificantes</p>
+            </div>
+
+            <div class="col-6 col-md-2 text-center">
+              <img src="images/cat5.jpg" class="rounded-circle img-fluid shadow" style="width: 130px; height: 130px; object-fit: cover;" alt="Corporal">
+              <p class="mt-2 fw-medium">Reparadores</p>
+            </div>
+      
+            <div class="col-6 col-md-2 text-center">
+              <img src="images/cat2.jpg" class="rounded-circle img-fluid shadow" style="width: 130px; height: 130px; object-fit: cover;" alt="Kits">
+              <p class="mt-2 fw-medium">Hidratacion</p>
+            </div>
+      
+            <div class="col-6 col-md-2 text-center">
+              <img src="images/cat6.jpg" class="rounded-circle img-fluid shadow" style="width: 130px; height: 130px; object-fit: cover;" alt="Mayoristas">
+              <p class="mt-2 fw-medium">Proteccion</p>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+      
+    <section id="como-funciona" class="container text-center py-5">
+        <h2 class="mb-4">Cómo saber que necesito</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card p-4 border-0">
+                    <img src="images/in.png" class="img-fluid" alt="Paso 1">
+                    <h3 class="mt-3">Segun tu tipo de piel</h3>
+                    <p>Selecciona el paquete que mejor se adapte a ti.</p>
                 </div>
-                <div class="col-md-6 text-center">
-                    <h2>Sobre Nosotros</h2>
-                    <p>Val-Makeup es más que una tienda de cosmética; 
-                        es un universo de expresión personal donde cada 
-                        pincelada cuenta una historia y cada tono realza 
-                        tu verdadera esencia. Fundada por Valentina Cruz, 
-                        una apasionada del maquillaje con más de 10 años de 
-                        experiencia en la industria de la belleza, nuestra 
-                        marca nace del deseo de empoderar a cada persona 
-                        para que descubra y celebre su belleza única.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 border-0">
+                    <img src="images/in2.png" class="img-fluid" alt="Paso 2">
+                    <h3 class="mt-3">Situacion a tratar</h3>
+                    <p>Decide la frecuencia de entrega de tus productos.</p>
                 </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 border-0">
+                    <img src="images/in3.png" class="img-fluid" alt="Paso 3">
+                    <h3 class="mt-3">Rutina básica</h3>
+                    <p>Recibe tu paquete directamente en tu puerta.</p>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-dark mt-4">Compra tu paquete</button>
+    </section>
+    
+    <section id="marcas" class="container-fluid py-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="carouselMarcas" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/logo1.png" class="d-block w-100" alt="Marca 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/logo2.png" class="d-block w-100" alt="Marca 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/logo3.png" class="d-block w-100" alt="Marca 3">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselMarcas" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselMarcas" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6 bg-black text-white d-flex align-items-center justify-content-center">
+                <h2 class="text-center">ESTAMOS SIEMPRE CON LAS MEJORES MARCAS</h2>
+            </div>
+        </div>
+    </section>
+    <br>
+    <section id="galeria" class="container text-center py-5">
+        <h2 class="mb-4">Galería</h2>
+        <div class="row">
+            <div class="col-md-4">
+                    <img src="images/antes.webp" class="img-fluid rounded">
+            </div>
+            <div class="col-md-4">
+                    <img src="images/antes.webp" class="img-fluid rounded">
+            </div>
+            <div class="col-md-4">
+                    <img src="images/antes.webp" class="img-fluid rounded">
             </div>
         </div>
     </section>
     
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-4">
+                    <h4 class="fw-bold">Tienda</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light text-decoration-none">Paquetes de suscripción</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Envío y devoluciones</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Política de la tienda</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Métodos de pago</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">FAQ</a></li>
+                    </ul>
+                </div>
     
+                <div class="col-md-4 text-center">
+                    <h4 class="fw-bold">Únete a nuestra comunidad</h4>
+                    <p>Recibe consejos de belleza, tendencias y ofertas exclusivas.</p>
+                    
+                    <div class="mt-3">
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+    
+                <div class="col-md-4 text-md-end text-center mt-4 mt-md-0">
+                    <h4 class="fw-bold">Contacto</h4>
+                    <p>Av. Fray A. Alcalde 10<br>44100 Guad., Jal., MX</p>
+                    <p>info@misitio.com</p>
+                    <p>+52-1-33-12345678</p>
+                </div>
+            </div>
+        </div>
+    </footer>    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/Frontend/script.js"></script>
+    <script src="script.js"></script>
+    <script src="carrito.js"></script>
+    <script src="auth.js"></script>
 </body>
 </html>

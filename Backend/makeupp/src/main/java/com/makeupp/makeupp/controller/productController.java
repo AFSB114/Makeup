@@ -7,12 +7,7 @@ import com.makeupp.makeupp.service.productService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/products")
@@ -24,7 +19,12 @@ public class productController {
     @PostMapping("/")
     public ResponseEntity<Object> addProduct(@RequestBody productDTO productDTO) {
         responseDTO respuesta = productService.save(productDTO);
-        return new ResponseEntity<>(respuesta, HttpStatus.OK);
+
+        if (respuesta.getStatus().equals(HttpStatus.OK.toString())) {
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/")
@@ -36,9 +36,20 @@ public class productController {
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneProduct(@PathVariable int id) {
         var producto = productService.findById(id);
-        if (!producto.isPresent()) 
-            return new ResponseEntity<>("", HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(producto, HttpStatus.OK);
+        if (!producto.isPresent())
+            return new ResponseEntity<>("Producto no encontrado", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(producto.get(), HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}") 
+    public ResponseEntity<Object> updateProduct(@PathVariable int id, @RequestBody productDTO productDTO) {
+        responseDTO respuesta = productService.updateProduct(id, productDTO);
+
+        if (respuesta.getStatus().equals(HttpStatus.OK.toString())) {
+            return new ResponseEntity<>(respuesta, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/{id}")

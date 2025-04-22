@@ -1,18 +1,23 @@
 package com.makeupp.makeupp.DTO;
 
+import com.makeupp.makeupp.model.product;
+
 public class cartDTO {
     private int cartId;
     private int userId;
     private int productId;
     private int stock;
+    private product product; // Agregado para incluir el producto completo
 
     public cartDTO() {
     }
 
-    public cartDTO(int cartId, int userId, int productId, int stock) {
+    // Constructor con producto
+    public cartDTO(int cartId, int userId, product product, int stock) {
         this.cartId = cartId;
         this.userId = userId;
-        this.productId = productId;
+        this.product = product;
+        this.productId = product.getProduct_id(); // también lo seteamos por compatibilidad
         this.stock = stock;
     }
 
@@ -46,5 +51,13 @@ public class cartDTO {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public product getProduct() {
+        return product;
+    }
+
+    public void setProduct(product product) {
+        this.product = product;
     }
 }

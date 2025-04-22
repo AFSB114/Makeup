@@ -10,8 +10,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 
 
-@Entity(name = "product")
-public class product {
+@Entity(name = "product")  
+public class product { 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int product_id;

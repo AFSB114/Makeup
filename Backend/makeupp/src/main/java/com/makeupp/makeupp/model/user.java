@@ -1,5 +1,7 @@
 package com.makeupp.makeupp.model;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +33,10 @@ public class user {
     @Column(name = "role", length = 100, nullable = false)
     private String role;
 
+    @Column(name = "status", nullable = false)
+    @ColumnDefault("TRUE")
+    private boolean status;
+
     public user() {
     }
 
@@ -42,6 +48,7 @@ public class user {
         this.address = address;
         this.phone = phone;
         this.role = role;
+        this.status = true;
     }
 
     public int getId() {
@@ -99,4 +106,13 @@ public class user {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 }
+

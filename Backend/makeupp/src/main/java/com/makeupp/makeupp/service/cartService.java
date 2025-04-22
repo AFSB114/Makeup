@@ -7,20 +7,23 @@ import com.makeupp.makeupp.model.product;
 import com.makeupp.makeupp.repository.Icart;
 import com.makeupp.makeupp.repository.Iuser;
 import com.makeupp.makeupp.repository.Iproduct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class cartService {
 
     @Autowired
     private Icart data;
-    
+
     @Autowired
     private Iuser userRepository;
-    
+
     @Autowired
     private Iproduct productRepository;
 
@@ -58,5 +61,16 @@ public class cartService {
             return true;
         }
         return false;
+    }
+
+    public List<cartDTO> getCartByUserId(int userId) {
+        List<cart> carts = data.findByUser_Id(userId);
+    
+        return carts.stream().map(cart -> new cartDTO(
+            cart.getCart_id(),
+            cart.getUser().getId(),
+            cart.getProduct(),
+            cart.getStock()
+        )).collect(Collectors.toList());
     }
 }

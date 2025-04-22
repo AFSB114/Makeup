@@ -33,7 +33,7 @@ public class productService {
     public responseDTO deleteProduct(int id) {
         if (!findById(id).isPresent()) {
             return new responseDTO(
-                HttpStatus.OK.toString(),
+                HttpStatus.NOT_FOUND.toString(),
                 "El producto no existe"
             );
         }
@@ -60,6 +60,35 @@ public class productService {
             "Producto guardado correctamente"
         );
     }
+
+    public responseDTO updateProduct(int id, productDTO productDTO) {
+        Optional<product> optionalProduct = data.findById(id);
+        if (!optionalProduct.isPresent()) {
+            return new responseDTO(HttpStatus.NOT_FOUND.toString(), "El producto no existe");
+        }
+    
+        product existingProduct = optionalProduct.get();
+        
+        // Verificar si se envió una nueva categoría, si no, mantener la actual
+        Optional<category> category = categoryRepository.findById(productDTO.getCategoryId());
+        if (productDTO.getCategoryId() != 0 && !category.isPresent()) {
+            return new responseDTO(HttpStatus.BAD_REQUEST.toString(), "La categoría no existe");
+        }
+    
+        existingProduct.setName(productDTO.getName());
+        existingProduct.setDescription(productDTO.getDescription());
+        existingProduct.setPrice(productDTO.getPrice());
+        existingProduct.setStock(productDTO.getStock());
+        if (productDTO.getCategoryId() != 0) {
+            existingProduct.setCategory(category.get());
+        }
+        existingProduct.setImage(productDTO.getImage());
+    
+        data.save(existingProduct);
+    
+        return new responseDTO(HttpStatus.OK.toString(), "Producto actualizado correctamente");
+    }
+    
 
     public productDTO convertToDTO(product product) {
         return new productDTO(

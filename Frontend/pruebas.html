@@ -31,23 +31,18 @@
         <div class="slider"></div>
     </div>
 
-    
-
     <script>
         const container = document.querySelector('.container');
         const after = document.querySelector('.after');
         const slider = document.querySelector('.slider');
 
         let isDragging = false;
-
-        // Evento cuando el usuario hace clic en el slider
         slider.addEventListener('mousedown', () => {
             isDragging = true;
         });
 
-        // Evento cuando el usuario mueve el mouse
         document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return; // Solo se mueve si está arrastrando
+            if (!isDragging) return; 
             let rect = container.getBoundingClientRect();
             let x = e.clientX - rect.left;
 
@@ -58,7 +53,7 @@
             slider.style.left = `${x}px`;
         });
 
-        // Evento cuando el usuario suelta el mouse
+
         document.addEventListener('mouseup', () => {
             isDragging = false;
         });
