@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       </div>
     `;
 
-    // Agregar producto al carrito sin recargar la página
     document.getElementById("btnAgregarCarrito").addEventListener("click", async () => {
       const cantidad = parseInt(document.getElementById("cantidad").textContent);
       const userId = parseInt(localStorage.getItem("userId"));
@@ -55,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         if (res.ok) {
           alert("Producto agregado a la bolsa.");
-          // Actualizar el carrito sin recargar
+          
           if (typeof cargarCarrito === "function") {
             cargarCarrito(userId);
           }
