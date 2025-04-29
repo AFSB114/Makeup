@@ -10,7 +10,13 @@ nav {
     height: 50px; 
     padding: 5px 20px; 
 }
-
+.resaltar {
+    border: 2px solid #ff4081;
+    box-shadow: 0 0 10px rgba(255,64,129,0.5);
+}
+html {
+    scroll-behavior: smooth;
+} 
 .search-container {
     display: flex;
     align-items: center;

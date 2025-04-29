@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class reviewService {
@@ -37,18 +38,10 @@ public class reviewService {
 
     public responseDTO deleteReview(int id) {
         if (!findById(id).isPresent()) {
-            responseDTO respuesta = new responseDTO(
-                HttpStatus.OK.toString(),
-                "El registro no existe"
-            );
-            return respuesta;
+            return new responseDTO(HttpStatus.OK.toString(), "El registro no existe");
         }
         data.deleteById(id);
-        responseDTO respuesta = new responseDTO(
-            HttpStatus.OK.toString(),
-            "Se eliminó correctamente"
-        );
-        return respuesta;
+        return new responseDTO(HttpStatus.OK.toString(), "Se eliminó correctamente");
     }
 
     public responseDTO save(reviewDTO reviewDTO) {
@@ -59,11 +52,7 @@ public class reviewService {
 
         review reviewRegister = convertToModel(reviewDTO, user, product);
         data.save(reviewRegister);
-        responseDTO respuesta = new responseDTO(
-            HttpStatus.OK.toString(),
-            "Se guardó correctamente"
-        );
-        return respuesta;
+        return new responseDTO(HttpStatus.OK.toString(), "Se guardó correctamente");
     }
 
     public reviewDTO convertToDTO(review review) {
@@ -77,13 +66,21 @@ public class reviewService {
         );
     }
 
-    public review convertToModel(reviewDTO reviewDTO, user user, product product) {
+    public review convertToModel(reviewDTO dto, user user, product product) {
         return new review(
                 user,
                 product,
-                reviewDTO.getRating(),
-                reviewDTO.getComment(),
-                reviewDTO.getReviewDate()
+                dto.getRating(),
+                dto.getComment(),
+                dto.getReviewDate()
         );
     }
+
+    public List<reviewDTO> findByProductId(int productId) {
+        return data.findByProductId(productId)
+                   .stream()
+                   .map(this::convertToDTO)
+                   .collect(Collectors.toList());
+    }
+    
 }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Categoría | Val-Makeup</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Skinnn</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="maquillaje.html">Categorias</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br> <!-- Espacio por el navbar fijo -->
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="form-container p-4 rounded shadow-lg text-center bg-light">
+            <h2 class="mb-3">Agregar nueva categoría</h2>
+            <form id="agregarCategoriaForm" onsubmit="return agregarCategoria(event)">
+                <div class="mb-3 text-start">
+                    <input type="text" class="form-control" id="nombreCategoria" placeholder="Nombre de la categoría" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Agregar Categoría</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    function agregarCategoria(event) {
+        event.preventDefault(); // Evitar recargar la página
+
+        const nombreCategoria = document.getElementById('nombreCategoria').value.trim();
+
+        if (nombreCategoria === "") {
+            alert("Por favor, ingresa un nombre para la categoría.");
+            return false;
+        }
+
+        fetch('http://localhost:8085/api/v1/category/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: nombreCategoria })
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("¡Categoría agregada exitosamente!");
+                document.getElementById('agregarCategoriaForm').reset();
+            } else {
+                alert("Error al agregar la categoría.");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Error de conexión.");
+        });
+
+        return false;
+    }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

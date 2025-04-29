@@ -107,9 +107,7 @@
                 <div class="mb-3 text-start">
                     <label for="rol" class="form-label"></label>
                     <select class="form-select" id="categoria" required>
-                        <option value="" disabled selected>Selecciona una categoria</option>
-                        <option value="1">Limpieza</option>
-                        <option value="2">Hidratacion</option>
+                        <option value="" disabled selected>Selecciona una categoria</option>  
                     </select>
                 </div>
                 
@@ -117,7 +115,28 @@
             </form>
         </div>
     </div>
-
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          fetch('http://localhost:8085/api/v1/category/')
+              .then(response => response.json())
+              .then(data => {
+                  const categoriaSelect = document.getElementById('categoria');
+      
+                  categoriaSelect.innerHTML = '<option value="" disabled selected>Selecciona una categoría</option>';
+      
+                  data.forEach(categoria => {
+                      const option = document.createElement('option');
+                      option.value = categoria.category_id;
+                      option.textContent = categoria.name.trim(); 
+                      categoriaSelect.appendChild(option);
+                  });
+              })
+              .catch(error => {
+                  console.error('Error cargando categorías:', error);
+              });
+      });
+      </script>
+      
     <script src="base1.js"></script>
     <script src="carrito.js"></script>
     <script src="auth.js"></script>
