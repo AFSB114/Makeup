@@ -1,14 +1,11 @@
 package com.makeupp.makeupp.model;
 
+import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import java.util.List;
 
-@Entity(name = "user")
+@Entity(name = "users")
 public class user {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,6 +46,10 @@ public class user {
         this.phone = phone;
         this.role = role;
         this.status = true;
+    }
+
+    public String getIdString() {
+        return String.valueOf(id);
     }
 
     public int getId() {

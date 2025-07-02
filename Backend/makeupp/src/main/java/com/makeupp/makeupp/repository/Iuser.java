@@ -13,14 +13,17 @@ public interface Iuser extends JpaRepository<user, Integer> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE user SET status = FALSE WHERE id = :id")
+    @Query("UPDATE users SET status = FALSE WHERE id = :id")
     void eliminar(int id);
 
     Optional<user> findByEmailAndPassword(String email, String password);
 
-    @Query("SELECT c FROM user c WHERE c.status != false")
+    @Query("SELECT c FROM users c WHERE c.status != false")
     List<user> getListUserActive();
 
-    @Query("SELECT c FROM user c WHERE c.name LIKE %?1%")
+    @Query("SELECT c FROM users c WHERE c.name LIKE %?1%")
     List<user> getListUserForName(String filter);
+
+    @Query("SELECT u FROM users u WHERE u.email = :userEmail")
+    Optional<user> findByEmail(String userEmail);
 }
